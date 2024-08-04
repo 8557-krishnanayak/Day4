@@ -70,8 +70,8 @@ public class ArrayListProgram {
             for (int j = 0; j < (list.size() - 1 - i); j++) {
                 if (list.get(j) > list.get(j + 1)) {
                     Integer temp = list.get(j);
-                    list.set(j,list.get(j+1));
-                    list.set(j+1, temp);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, temp);
                 }
             }
         }
@@ -79,11 +79,20 @@ public class ArrayListProgram {
         System.out.println(list);
     }
 
-    public static void rotate(List<Integer> arr, int n) {
-        List<Integer> list = new ArrayList<>();
-        int idx = n % arr.size();
+    public static void rotate(List<Integer> list, int k) {
+        if (list == null || list.isEmpty() || k <= 0) {
+            return;
+        }
 
-        return;
+        int size = list.size();
+        k = k % size;
+
+
+        Collections.reverse(list);
+
+        Collections.reverse(list.subList(0, k));
+
+        Collections.reverse(list.subList(k, size));
     }
 
     public static void main(String[] args) {
